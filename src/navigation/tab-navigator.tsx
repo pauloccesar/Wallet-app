@@ -6,6 +6,7 @@ import { HeaderButton } from '../components/HeaderButton';
 import { TabBarIcon } from '../components/TabBarIcon';
 import One from '../screens/one';
 import Two from '../screens/two';
+import { TabItemMenu } from '~/components/TabItemMenu';
 
 const Tab = createBottomTabNavigator();
 
@@ -21,9 +22,12 @@ export default function TabLayout({ navigation }: Props) {
         name="One"
         component={One}
         options={{
-          title: 'Tab One',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-          headerRight: () => <HeaderButton onPress={() => navigation.navigate('Modal')} />,
+          tabBarLabel: "Início",
+          headerShown: false,
+          unmountOnBlur: true,
+          tabBarIcon: (props) => (
+            <TabItemMenu {...props} icon="home" label={""} />
+          ),
         }}
       />
       <Tab.Screen

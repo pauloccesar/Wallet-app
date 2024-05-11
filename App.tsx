@@ -1,7 +1,36 @@
 import 'react-native-gesture-handler';
+// import 'react-native-reanimated'
 
-import RootStack from './src/navigation';
+import { NavigationContainer } from '@react-navigation/native'
+import { StatusBar } from "expo-status-bar";
+import { ThemeProvider } from "styled-components";
+// import { useFonts } from "expo-font";
+import theme from "./src/global/styles/theme";
+import { ActivityIndicator } from "react-native";
+import Routes from './src/navigation';
+
+// const [fontsLoaded] = useFonts({
+//   "Gibson-Regular": require("./assets/fonts/gibson-regular.otf"),
+//   "Gibson-Semibold": require("./assets/fonts/gibson-semibold.otf"),
+//   "Gibson-Bold": require("./assets/fonts/gibson-bold.otf"),
+// });
 
 export default function App() {
-  return <RootStack />;
+  // return <RootStack />;
+
+  // if (!fontsLoaded) {
+  //   return <></>;
+  // }
+
+  return (
+    <>
+      <NavigationContainer>
+        <ThemeProvider theme={theme}>
+          <Routes />
+          {/* <ActivityIndicator /> */}
+          <StatusBar style="light" backgroundColor="transparent" />
+        </ThemeProvider>
+      </NavigationContainer>
+    </>
+  );
 }
