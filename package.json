@@ -14,15 +14,22 @@
     "@react-navigation/bottom-tabs": "^6.5.20",
     "@react-navigation/native": "^6.1.7",
     "@react-navigation/stack": "^6.3.17",
+    "@shopify/react-native-skia": "1.2.3",
+    "date-fns": "^3.6.0",
     "expo": "^51.0.2",
     "expo-status-bar": "~1.12.1",
     "react": "18.2.0",
     "react-native": "0.74.1",
     "react-native-gesture-handler": "~2.16.1",
+    "react-native-network-info": "^5.2.1",
+    "react-native-reanimated": "~3.10.1",
     "react-native-responsive-fontsize": "^0.5.1",
     "react-native-safe-area-context": "^4.8.2",
     "react-native-screens": "3.31.1",
-    "styled-components": "^6.1.11"
+    "react-use-websocket": "^4.8.1",
+    "styled-components": "^6.1.11",
+    "victory-candlestick": "^37.0.2",
+    "victory-native": "^40.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",

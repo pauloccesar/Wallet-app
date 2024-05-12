@@ -1,8 +1,10 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import { CustomTabBar } from '../components/CustomTab'
+
+import Home from '~/screens/Home';
 
 import One from '../screens/one';
 import Two from '../screens/two';
-import { CustomTabBar } from '../components/CustomTab'
 
 const Tab = createBottomTabNavigator();
 
@@ -25,7 +27,7 @@ function Routes() {
     >
       <Tab.Screen
         name="Home"
-        component={One}
+        component={Home}
         options={{
           tabBarIcon: 'home',
         }}
