@@ -1,8 +1,8 @@
 import { Circle, useFont } from '@shopify/react-native-skia';
-import { format } from 'date-fns';
 import { StyleSheet, Text, View, TextInput } from 'react-native';
 import Animated, { SharedValue, useAnimatedProps } from 'react-native-reanimated';
 import { CartesianChart, Line, useChartPressState } from 'victory-native';
+import theme from '~/global/styles/theme';
 
 import { formatDolar } from '~/utils';
 
@@ -78,7 +78,7 @@ export default function GraphicCartesian({ data }) {
           }}>
           {({ points }) => (
             <>
-              <Line points={points.price} color="blue" strokeWidth={3} />
+              <Line points={points.price} color={theme.colors.lineCartesianChart} strokeWidth={3} />
               {isActive && <ToolTip x={state.x.position} y={state.y.price.position} />}
             </>
           )}
