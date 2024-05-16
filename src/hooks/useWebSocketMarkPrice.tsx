@@ -7,7 +7,7 @@ interface PriceData {
   seconds: number;
 }
 
-export function useWebSocketService() {
+export function useWebSocketMarkPrice() {
   const [dataArray, setDataArray] = useState<PriceData[]>(firstData);
 
   const addData = useCallback((newPrice: number, newDate: Date) => {
