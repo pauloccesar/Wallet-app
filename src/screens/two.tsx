@@ -1,5 +1,5 @@
-import { ScreenContent } from '~/components/ScreenContent';
+import { Text } from 'react-native';
 
 export default function TabTwoScreen() {
-  return <ScreenContent path="screens/two.tsx" title="Tab Two" />;
+  return <Text>TELA 2</Text>;
 }
