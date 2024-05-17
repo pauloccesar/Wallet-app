@@ -1,4 +1,4 @@
-import styled from "styled-components/native";
+import styled from 'styled-components/native';
 import { Feather } from '@expo/vector-icons';
 
 export const Container = styled.View`
@@ -6,14 +6,10 @@ export const Container = styled.View`
   height: 50px;
   padding-bottom: 10px;
   flex-direction: row;
-  align-items: center;
+  align-items: space-between;
+  align-self: center;
   justify-content: space-between;
   background-color: ${({ theme }) => theme.colors.background};
-`;
-
-export const HeaderContainer = styled.View`
-  flex-direction: row;
-  align-items: center;
 `;
 
 export const Icon = styled(Feather).attrs({

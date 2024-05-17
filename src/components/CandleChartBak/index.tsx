@@ -4,7 +4,7 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { VictoryAxis, VictoryBar, VictoryCandlestick, VictoryChart, VictoryTheme } from 'victory-native'
 
-export default function GraphicCandle({ data }) {
+export default function GraphicCandleBak({ data }) {
   const font = useFont(require('../../fonts/Roboto-Regular.ttf'));
   const yValues = data.map(item => item.open);
   const xValues = data.map(item => new Date(item.x));

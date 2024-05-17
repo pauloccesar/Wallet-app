@@ -1,7 +1,7 @@
-import { Circle, useFont } from '@shopify/react-native-skia';
+import { Circle, useFont, Path } from '@shopify/react-native-skia';
 import { StyleSheet, Text, View, TextInput } from 'react-native';
 import Animated, { SharedValue, useAnimatedProps } from 'react-native-reanimated';
-import { CartesianChart, Line, useChartPressState } from 'victory-native';
+import { CartesianChart, Line, useAnimatedPath, useChartPressState, useLinePath, type PointsArray, } from 'victory-native';
 import theme from '~/global/styles/theme';
 
 import { formatDolar } from '~/utils';
@@ -11,6 +11,14 @@ const AnimatedTextInput = Animated.createAnimatedComponent(TextInput);
 
 function ToolTip({ x, y }: { x: SharedValue<number>; y: SharedValue<number> }) {
   return <Circle cx={x} cy={y} r={8} color={theme.colors.shape} />;
+}
+
+function MyAnimatedLine({ points }: { points: PointsArray }) {
+  const { path } = useLinePath(points);
+  // 👇 create an animated path
+  const animPath = useAnimatedPath(path);
+
+  return <Path path={animPath} style="stroke" color={theme.colors.lineCartesianChart} strokeWidth={3} />;
 }
 
 export default function GraphicCartesian({ data }) {
@@ -35,7 +43,7 @@ export default function GraphicCartesian({ data }) {
 
   return (
     <View style={styles.container}>
-      <View style={{ flex: 1}}>
+      <View style={{ flex: 1 }}>
         {isActive && (
           <View>
             <AnimatedTextInput
@@ -78,9 +86,11 @@ export default function GraphicCartesian({ data }) {
             formatXLabel: (value) => '',
             // formatXLabel: (value) => `${value}`
           }}>
+
           {({ points }) => (
             <>
-              <Line points={points.price} color={theme.colors.lineCartesianChart} strokeWidth={3} />
+              {/* <Line points={points.price} color={theme.colors.lineCartesianChart} strokeWidth={3} /> */}
+              <MyAnimatedLine points={points.price} />
               {isActive && <ToolTip x={state.x.position} y={state.y.price.position} />}
             </>
           )}
@@ -101,7 +111,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     paddingHorizontal: 8,
     paddingTop: 24,
-    backgroundColor: theme.colors.darkBlue, 
+    backgroundColor: theme.colors.darkBlue,
     flexDirection: 'row',
     borderRadius: 50,
     gap: 8,

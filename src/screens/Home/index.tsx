@@ -1,6 +1,6 @@
 import { Container, Content } from './styles';
 
-import GraphicCandle from '~/components/CandleChart';
+import GraphicCandle from '~/components/CandleChartBak';
 import GraphicCartesian from '~/components/CartesianChart';
 import { Header } from '~/components/Header';
 import { useWebSocketKline } from '~/hooks/useWebSocketKline';

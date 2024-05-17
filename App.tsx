@@ -28,7 +28,7 @@ export default function App() {
         <ThemeProvider theme={theme}>
           <Routes />
           {/* <ActivityIndicator /> */}
-          <StatusBar style="light" backgroundColor="transparent" />
+          <StatusBar style="light" backgroundColor="transparent"/>
         </ThemeProvider>
       </NavigationContainer>
     </>
