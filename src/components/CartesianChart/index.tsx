@@ -10,7 +10,7 @@ Animated.addWhitelistedNativeProps({ text: true });
 const AnimatedTextInput = Animated.createAnimatedComponent(TextInput);
 
 function ToolTip({ x, y }: { x: SharedValue<number>; y: SharedValue<number> }) {
-  return <Circle cx={x} cy={y} r={8} color="black" />;
+  return <Circle cx={x} cy={y} r={8} color={theme.colors.shape} />;
 }
 
 export default function GraphicCartesian({ data }) {
@@ -19,7 +19,7 @@ export default function GraphicCartesian({ data }) {
 
   const animatedText = useAnimatedProps(() => {
     return {
-      text: `$ ${state.y.price.value.value.toFixed(2)}`,
+      text: `U$ ${state.y.price.value.value.toFixed(2)}`,
       defaultValue: '',
     };
   });
@@ -28,20 +28,20 @@ export default function GraphicCartesian({ data }) {
     const date = new Date(state.x.value.value);
     return {
       // text: `$ ${date.toLocaleDateString("pt-BR")}`,
-      text: `$ ${state.x.value.value}`,
+      text: `U$ ${state.x.value.value}`,
       defaultValue: '',
     };
   });
 
   return (
     <View style={styles.container}>
-      <View style={{ width: '100%', height: '50%' }}>
+      <View style={{ flex: 1}}>
         {isActive && (
           <View>
             <AnimatedTextInput
               editable={false}
               underlineColorAndroid="transparent"
-              style={{ fontSize: 24, fontWeight: 'bold', color: '#000' }}
+              style={{ fontSize: 24, fontWeight: 'bold', color: theme.colors.shape }}
               animatedProps={animatedText}
             />
 
@@ -55,21 +55,23 @@ export default function GraphicCartesian({ data }) {
 
         {!isActive && (
           <View>
-            <Text style={{ fontSize: 24, fontWeight: 'bold', color: '#000' }}>
+            <Text style={{ fontSize: 24, fontWeight: 'bold', color: theme.colors.shape }}>
               U${data[data.length - 1].price.toFixed(4)}
             </Text>
-            <Text>Atual</Text>
+            <Text style={{ color: theme.colors.shape }}>Atual</Text>
           </View>
         )}
 
         <CartesianChart
           data={data}
-          xKey="seconds"
+          xKey="x"
           yKeys={['price']}
           chartPressState={state}
           axisOptions={{
             tickCount: 12,
             font,
+            lineColor: theme.colors.shape,
+            labelColor: theme.colors.shape,
             labelOffset: { x: 2, y: 10 },
             labelPosition: 'outset',
             formatYLabel: (value) => `${formatDolar(value)}`,
@@ -90,10 +92,26 @@ export default function GraphicCartesian({ data }) {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
+    // flex: 1,
+    width: '100%',
+    height: '65%',
+    // backgroundColor: theme.colors.background,
     alignItems: 'center',
     justifyContent: 'center',
+    alignSelf: 'center',
     paddingHorizontal: 8,
+    paddingTop: 24,
+    backgroundColor: theme.colors.darkBlue, 
+    flexDirection: 'row',
+    borderRadius: 50,
+    gap: 8,
+    elevation: 10,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 3.80,
   },
 });

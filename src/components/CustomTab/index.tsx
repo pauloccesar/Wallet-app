@@ -1,6 +1,7 @@
 import { View, TouchableOpacity, StyleSheet, Platform } from 'react-native'
 
 import { SimpleLineIcons } from '@expo/vector-icons'
+import theme from '~/global/styles/theme';
 
 export function CustomTabBar({ state, descriptors, navigation }) {
   return (
@@ -42,11 +43,11 @@ export function CustomTabBar({ state, descriptors, navigation }) {
               style={styles.buttonTab}
             >
               <View style={{  alignItems: 'center', padding: 4}}>
-                <View style={{ padding:8, borderRadius: 99, backgroundColor: isFocused ? "#F8E2FD" : "transparent"}}>
+                <View style={{ padding:8, borderRadius: 99, backgroundColor: isFocused ? theme.colors.magenta : "transparent"}}>
                   <SimpleLineIcons
                     name={options.tabBarIcon}
                     size={34}
-                    color={isFocused ? '#8F2ABD' : '#535353'}
+                    color={theme.colors.shape}
                   />
                 </View>
               </View>
@@ -72,7 +73,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     bottom: 0,
-    backgroundColor: 'rgba(255,255,255,0.9)', 
+    backgroundColor: theme.colors.darkBlue, 
     flexDirection: 'row',
     borderRadius: 99,
     gap: 8,

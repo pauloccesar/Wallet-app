@@ -2,7 +2,7 @@ import { useFont } from '@shopify/react-native-skia';
 import { format } from 'date-fns';
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import { VictoryAxis, VictoryBar, VictoryCandlestick, VictoryChart, VictoryTheme } from 'victory-native';
+import { VictoryAxis, VictoryBar, VictoryCandlestick, VictoryChart, VictoryTheme } from 'victory-native'
 
 export default function GraphicCandle({ data }) {
   const font = useFont(require('../../fonts/Roboto-Regular.ttf'));

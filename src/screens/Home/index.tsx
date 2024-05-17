@@ -1,4 +1,4 @@
-import { Container } from './styles';
+import { Container, Content } from './styles';
 
 import GraphicCandle from '~/components/CandleChart';
 import GraphicCartesian from '~/components/CartesianChart';
@@ -14,9 +14,11 @@ export default function Home() {
   return (
     <Container>
       <Header
-        // title={'TESTE'}
+      // title={'TESTE'}
       />
-      <GraphicCartesian data={dataMarkPrice} />
+      <Content>
+        <GraphicCartesian data={dataMarkPrice} />
+      </Content>
       {/* <GraphicCandle data={datKline} />   */}
     </Container>
   );
