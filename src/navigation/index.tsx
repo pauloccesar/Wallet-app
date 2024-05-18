@@ -5,6 +5,8 @@ import Home from '~/screens/Home';
 
 import One from '../screens/one';
 import Two from '../screens/two';
+import SplashScreen from '~/screens/SplashScreen';
+import ConstructionScreen from '~/screens/ConstructionScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -33,22 +35,22 @@ function Routes() {
         }}
       />
       <Tab.Screen
-        name="Money"
-        component={Two}
+        name="Construction"
+        component={ConstructionScreen}
         options={{
           tabBarIcon: 'magnifier'
         }}
       />
       <Tab.Screen
         name="Store"
-        component={One}
+        component={ConstructionScreen}
         options={{
           tabBarIcon: 'wallet',
         }}
       />
       <Tab.Screen
         name="User"
-        component={Two}
+        component={ConstructionScreen}
         options={{
           tabBarIcon: 'user'
         }}

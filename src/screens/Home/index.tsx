@@ -1,4 +1,3 @@
-import CandleChart from '~/components/CandleChartbak1';
 import { ButtonContent, Container, Content, TouchableOpacityContent, TextContent } from './styles';
 
 import GraphicCandle from '~/components/CandleChart';
@@ -16,7 +15,7 @@ import { useState } from 'react';
 export default function Home() {
   const dataMarkPrice = useWebSocketMarkPrice();
   const datKline = useWebSocketKline();
-  const height = screenHeight * 0.28;
+  console.log("🚀 ~ Home ~ datKline:", datKline)
   const [isSelect, setIsSelect] = useState(true)
 
   return (

@@ -4,17 +4,17 @@ import { Svg, Line, Rect, G, Text } from 'react-native-svg';
 import * as scale from 'd3-scale';
 import * as array from 'd3-array';
 import * as d3TimeFormat from 'd3-time-format';
+import theme from '~/global/styles/theme';
 
 const CandlestickChart = ({ data }) => {
   const { width, height } = Dimensions.get('window');
-  const containerWidth = width - 16; // Ajuste de acordo com o paddingHorizontal
-  const containerHeight = (height * 0.65) - 48; // Ajuste de acordo com o paddingTop
-  const chartWidth = containerWidth - 40; // Ajuste para a largura do gráfico dentro do contêiner
-  const chartHeight = containerHeight - 40; // Ajuste para a altura do gráfico dentro do contêiner
+  const containerWidth = width - 16; 
+  const containerHeight = (height * 0.65) - 48; 
+  const chartWidth = containerWidth - 40; 
+  const chartHeight = containerHeight - 40; 
 
   const padding = 20;
 
-  // Convertendo as datas para objetos Date
   const parsedData = data.map(d => ({
     ...d,
     date: new Date(d.date)
@@ -43,11 +43,10 @@ const CandlestickChart = ({ data }) => {
     const fill = d.open > d.close ? 'red' : 'green';
     const xPosition = x(d.date);
 
-    if (xPosition === undefined) return null; // Verificação adicional
+    if (xPosition === undefined) return null; 
 
     return (
       <React.Fragment key={index}>
-        {/* High/Low Line */}
         <Line
           x1={xPosition + x.bandwidth() / 2}
           x2={xPosition + x.bandwidth() / 2}
@@ -56,11 +55,10 @@ const CandlestickChart = ({ data }) => {
           stroke="white"
           strokeWidth="1"
         />
-        {/* Candlestick Rect */}
         <Rect
-          x={xPosition + x.bandwidth() * 0.1} // Ajuste para centralizar o retângulo
+          x={xPosition + x.bandwidth() * 0.1} 
           y={Math.min(open, close)}
-          width={x.bandwidth() * 0.8} // Diminuir a largura da vela
+          width={x.bandwidth() * 0.8} 
           height={Math.abs(open - close)}
           fill={fill}
         />
@@ -108,15 +106,12 @@ const CandlestickChart = ({ data }) => {
   return (
     <View style={styles.container}>
       <Svg width={containerWidth} height={containerHeight}>
-        {/* Y Axis */}
         <G>
           {yTicks}
         </G>
-        {/* Candles */}
         <G>
           {candles}
         </G>
-        {/* X Axis */}
         <G>
           {xAxis}
         </G>
@@ -134,7 +129,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     paddingHorizontal: 8,
     paddingTop: 24,
-    backgroundColor: 'darkblue', // Substitua pelo seu tema
+    backgroundColor: theme.colors.darkBlue, 
     flexDirection: 'row',
     borderRadius: 50,
     gap: 8,
@@ -146,6 +141,7 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.2,
     shadowRadius: 3.80,
+    paddingLeft: 80
   },
 });
 

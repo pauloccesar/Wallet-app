@@ -1,11 +1,12 @@
 import { useState, useEffect, useCallback, useMemo } from 'react';
+import env from '~/env/intex';
 import { firsDataKline } from '~/screens/mockFirstData'
 export function useWebSocketKline() {
   const [dataArray, setDataArray] = useState(firsDataKline);
 
   const addData = useCallback((newData) => {
     setDataArray(prevDataArray => {
-      if (prevDataArray.length < 5) {
+      if (prevDataArray.length < 6) {
         return [...prevDataArray, newData];
       } else {
         const newDataArray = [...prevDataArray.slice(1), newData];
@@ -15,7 +16,7 @@ export function useWebSocketKline() {
   }, []);
 
   useEffect(() => {
-    const ws = new WebSocket('wss://stream.binance.com/stream?streams=btcusdt@kline_1m');
+    const ws = new WebSocket(env.WEBSOCKET_BASE_URL_K_LINE);
 
     const handleWebSocketMessage = (event) => {
       const data = JSON.parse(event.data);

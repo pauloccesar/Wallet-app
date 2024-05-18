@@ -22,7 +22,7 @@ export function useWebSocketMarkPrice() {
   }, []);
 
   useEffect(() => {
-    const ws = new WebSocket(env.WEBSOCKET_BASE_URL);
+    const ws = new WebSocket(env.WEBSOCKET_BASE_URL_MARK_PRICE);
 
     const handleWebSocketMessage = (event: MessageEvent) => {
       const data = JSON.parse(event.data);

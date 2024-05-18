@@ -10,8 +10,6 @@ export const Container = styled.SafeAreaView`
   background-color: ${({ theme }) => theme.colors.background};
   justify-content: center;
   align-items: center;
-  /* margin-left: 12px;
-  margin-right: 12px; */
 `;
 
 export const Content = styled.View`
@@ -27,11 +25,6 @@ export const ButtonContent = styled.View`
   width: 100%;
   height: 5%;
   justify-content: space-between;
-  /* padding: 16px; */
-  /* border: 1px solid transparent;
-  border-bottom-color: ${theme.colors.magenta};
-  margin-top: 16px;
-  border-top: 0px; */
 `;
 
 export const TouchableOpacityContent = styled.TouchableOpacity<SelecteddProps>`
