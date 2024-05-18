@@ -9,8 +9,8 @@ import theme from '~/global/styles/theme';
 const CandlestickChart = ({ data }) => {
   const { width, height } = Dimensions.get('window');
   const containerWidth = width - 16; 
-  const containerHeight = (height * 0.65) - 48; 
-  const chartWidth = containerWidth - 40; 
+  const containerHeight = (height * 0.6) - 48; 
+  const chartWidth = containerWidth - 60; 
   const chartHeight = containerHeight - 40; 
 
   const padding = 20;
@@ -51,15 +51,15 @@ const CandlestickChart = ({ data }) => {
           x1={xPosition + x.bandwidth() / 2}
           x2={xPosition + x.bandwidth() / 2}
           y1={high}
-          y2={low}
+          y2={low/2}
           stroke="white"
           strokeWidth="1"
         />
         <Rect
-          x={xPosition + x.bandwidth() * 0.1} 
+          x={xPosition + x.bandwidth() * 0.3} 
           y={Math.min(open, close)}
           width={x.bandwidth() * 0.8} 
-          height={Math.abs(open - close)}
+          height={Math.abs(open - close) * 0.8}
           fill={fill}
         />
       </React.Fragment>
@@ -91,7 +91,7 @@ const CandlestickChart = ({ data }) => {
         opacity="0.2"
       />
       <Text
-        x={padding - 5}
+        x={padding + 15}
         y={y(tick)}
         fontSize="10"
         fill="white"
