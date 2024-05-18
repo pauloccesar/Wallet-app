@@ -7,13 +7,11 @@ export function formatDolar(valor) {
 }
 
 export function formatarData(data) {
-  // Extrai o dia, mês e ano da data
-  const dia = data.getDate().toString().padStart(2, '0');
-  const mes = (data.getMonth() + 1).toString().padStart(2, '0'); // Os meses começam do zero, então é necessário adicionar 1
-  const ano = data.getFullYear();
+  const day = data.getDate().toString().padStart(2, '0');
+  const month = (data.getMonth() + 1).toString().padStart(2, '0');
+  const year = data.getFullYear();
 
-  // Retorna a data formatada no formato 'dd/mm/yyyy'
-  return `${dia}/${mes}/${ano}`;
+  return `${day}/${month}/${year}`;
 }
 
 export const formatDate = (timestamp: any) => {
