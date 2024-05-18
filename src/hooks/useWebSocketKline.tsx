@@ -25,7 +25,7 @@ export function useWebSocketKline() {
       const newPriceClose = parseFloat(klineData.c);
       const newPriceHigh = parseFloat(klineData.h);
       const newPriceLow = parseFloat(klineData.l);
-      addData({ timestamp: newDate.toISOString(), open: newPriceOpen, close: newPriceClose, high: newPriceHigh, low: newPriceLow });
+      addData({ date: newDate.toISOString(), open: newPriceOpen, close: newPriceClose, high: newPriceHigh, low: newPriceLow });
     };
 
     ws.onopen = () => {
