@@ -15,7 +15,6 @@ function ToolTip({ x, y }: { x: SharedValue<number>; y: SharedValue<number> }) {
 
 function MyAnimatedLine({ points }: { points: PointsArray }) {
   const { path } = useLinePath(points);
-  // 👇 create an animated path
   const animPath = useAnimatedPath(path);
 
   return <Path path={animPath} style="stroke" color={theme.colors.lineCartesianChart} strokeWidth={3} />;
@@ -32,15 +31,6 @@ export default function GraphicCartesian({ data }) {
     };
   });
 
-  const animatedDateText = useAnimatedProps(() => {
-    const date = new Date(state.x.value.value);
-    return {
-      // text: `$ ${date.toLocaleDateString("pt-BR")}`,
-      text: `U$ ${state.x.value.value}`,
-      defaultValue: '',
-    };
-  });
-
   return (
     <View style={styles.container}>
       <View style={{ flex: 1 }}>
@@ -52,21 +42,15 @@ export default function GraphicCartesian({ data }) {
               style={{ fontSize: 24, fontWeight: 'bold', color: theme.colors.shape }}
               animatedProps={animatedText}
             />
-
-            {/* <AnimatedTextInput
-              editable={false}
-              underlineColorAndroid={"transparent"}
-              animatedProps={animatedDateText}
-            ></AnimatedTextInput> */}
           </View>
         )}
 
         {!isActive && (
-          <View>
+          <View style={{flexDirection: 'row'}}>
+           <Text style={{ fontSize: 24, fontWeight: 'bold', color: theme.colors.shape}}>Atual: </Text>
             <Text style={{ fontSize: 24, fontWeight: 'bold', color: theme.colors.shape }}>
               U${data[data.length - 1].price.toFixed(4)}
             </Text>
-            <Text style={{ color: theme.colors.shape }}>Atual</Text>
           </View>
         )}
 
@@ -84,12 +68,10 @@ export default function GraphicCartesian({ data }) {
             labelPosition: 'outset',
             formatYLabel: (value) => `${formatDolar(value)}`,
             formatXLabel: (value) => '',
-            // formatXLabel: (value) => `${value}`
           }}>
 
           {({ points }) => (
             <>
-              {/* <Line points={points.price} color={theme.colors.lineCartesianChart} strokeWidth={3} /> */}
               <MyAnimatedLine points={points.price} />
               {isActive && <ToolTip x={state.x.position} y={state.y.price.position} />}
             </>
@@ -102,10 +84,8 @@ export default function GraphicCartesian({ data }) {
 
 const styles = StyleSheet.create({
   container: {
-    // flex: 1,
     width: '100%',
     height: '65%',
-    // backgroundColor: theme.colors.background,
     alignItems: 'center',
     justifyContent: 'center',
     alignSelf: 'center',

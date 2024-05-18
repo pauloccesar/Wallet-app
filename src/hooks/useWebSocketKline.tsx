@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback, useMemo } from 'react';
 import { firsDataKline } from '~/screens/mockFirstData'
 export function useWebSocketKline() {
-  const [dataArray, setDataArray] = useState([{"close": 66058.67, "high": 66058.67, "low": 66039.52, "open": 66040.01, "x": "2024-05-16T03:35:59.999Z"}]);
+  const [dataArray, setDataArray] = useState(firsDataKline);
 
   const addData = useCallback((newData) => {
     setDataArray(prevDataArray => {
@@ -25,7 +25,7 @@ export function useWebSocketKline() {
       const newPriceClose = parseFloat(klineData.c);
       const newPriceHigh = parseFloat(klineData.h);
       const newPriceLow = parseFloat(klineData.l);
-      addData({ x: newDate, open: newPriceOpen, close: newPriceClose, high: newPriceHigh, low: newPriceLow });
+      addData({ timestamp: newDate.toISOString(), open: newPriceOpen, close: newPriceClose, high: newPriceHigh, low: newPriceLow });
     };
 
     ws.onopen = () => {

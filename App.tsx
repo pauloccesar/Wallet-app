@@ -8,6 +8,7 @@ import { ThemeProvider } from "styled-components";
 import theme from "./src/global/styles/theme";
 import { ActivityIndicator } from "react-native";
 import Routes from './src/navigation';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 // const [fontsLoaded] = useFonts({
 //   "Gibson-Regular": require("./assets/fonts/gibson-regular.otf"),
@@ -26,9 +27,11 @@ export default function App() {
     <>
       <NavigationContainer>
         <ThemeProvider theme={theme}>
-          <Routes />
+          <GestureHandlerRootView >
+            <Routes />
+          </GestureHandlerRootView>
           {/* <ActivityIndicator /> */}
-          <StatusBar style="light" backgroundColor="transparent"/>
+          <StatusBar style="light" backgroundColor="transparent" />
         </ThemeProvider>
       </NavigationContainer>
     </>
